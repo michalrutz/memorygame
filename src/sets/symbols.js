@@ -10,5 +10,8 @@ export default [
     {symbol:"🦄", id:"unicorn"},
     {symbol:"🐷", id:"pig"},
     {symbol:"🐘", id:"elephant"},
-    {symbol:"🐙", id:"octopus"},
+    {symbol:"🍸", id:"1"},
+    {symbol:"🍆", id:"2"},
+    {symbol:"🥑", id:"3"},
+    {symbol:"🍩", id:"4"},
 ];

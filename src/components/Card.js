@@ -1,41 +1,51 @@
-import React, {Component} from 'react';
+import React  from 'react';
 import flipACard from '../functions/flipACard';
+import { disableACard, activateACard } from '../functions/disableACard';
+import { connect } from 'react-redux';
+import { increment } from '../redux/actions/actions';
 
-let pair = []; 
+let pair = [];
 
-class Card extends Component {
-    checkMatch(e){
+const Card = (props)=>{
+      function checkMatch(e){
         let symbol = e.target.id;
         flipACard(symbol)
-        //DISABLE THE CARD
+        disableACard(symbol);
         pair.push(symbol);
         console.log(pair);
         if(pair.length === 2){
             if (pair[0].split("&")[1] === pair[1].split("&")[1]){
                 console.log("a match!");
-                // ADD DISABLE CARDS
                 pair = []
+                props.dispatch(increment());
+                console.log(props.count.count)
             }}
         else if(pair.length === 3){
-                    flipACard(pair[1])
                     flipACard(pair[0])
+                    flipACard(pair[1])
+                    activateACard(pair[0])
+                    activateACard(pair[1])
                     pair = []
                     pair.push(symbol)
             }      
     }
-    render(props){
         return (
+            // <div className ="box-card">                
             <div className="flip-card">
-                <div className="flip-inner" id={"inner"+this.props.index+"&"+this.props.symbolId}>
-                    <div className="card front" id={this.props.index+"&"+this.props.symbolId} onClick={this.checkMatch}>
-                        <p>{this.props.symbol}</p></div>
-                    <div className="card back"  id={this.props.index+"&"+this.props.symbolId} onClick={this.checkMatch}>
-                        <p>❔</p>
-                    </div> 
+                <div className="flip-inner" id={"inner"+props.index+"&"+props.symbolId}>
+                    <div className="card front" id={props.index+"&"+props.symbolId} onClick={checkMatch}>
+                        <p>{props.symbol}</p></div>
+                    <div className="card back"  id={props.index+"&"+props.symbolId} onClick={checkMatch}>
+                        <p>❔</p></div> 
                 </div>
-            </div>
+                </div>
+            // </div>
+
     )
-    }
 }
 
-export default Card;
+const mapStateToProps = (state) => ({
+    count:state.countReducer
+})
+
+export default connect(mapStateToProps)(Card);

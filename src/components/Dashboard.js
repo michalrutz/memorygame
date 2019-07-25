@@ -1,14 +1,20 @@
 import React, {Component} from 'react';
 import Board from './Board';
+import { connect } from 'react-redux';
+import Header from './Header';
 
-class Dashboard extends Component {
-    render(){ 
+const Dashboard = (props) => {
         return (
-            <div>
+            <div id="dashboard">
+                <Header count={props.count.count}/>
                 <Board/> 
             </div> 
     )
-    }
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => ({
+    count:state.countReducer
+})
+
+export default connect(mapStateToProps)(Dashboard);
+

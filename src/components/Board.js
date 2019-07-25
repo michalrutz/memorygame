@@ -10,19 +10,33 @@ function randomId () {
     return id;
 }
 randomId();
-  
+
+function createCard(symbol, index) {
+    return <Card key={index+symbol.symbol} 
+            symbol={symbol.symbol}
+            symbolId={symbol.id}
+            index={index}/>;
+}
+
+var cards = randomCards.map( (symbol, index) => {
+    return createCard(symbol, index);
+});
+
 class Board extends Component {
     render(){ 
         return (
-            <div>
-                {randomCards.map((symbol, index)=>(
-                        <Card key={index+symbol.symbol} 
-                            symbol={symbol.symbol}
-                            symbolId={symbol.id}
-                            index={index}
-                            />))}
+            <div id="board">
+                {cards}
             </div>)
     }
 }
 
-export default Board;
+export default Board;    
+
+ // {randomCards.map((symbol, index)=>{ return (
+                //     <Card key={index+symbol.symbol} 
+                //         symbol={symbol.symbol}
+                //         symbolId={symbol.id}
+                //         index={index}
+                //         />)
+                //         })}
