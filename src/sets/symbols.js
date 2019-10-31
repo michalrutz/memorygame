@@ -15,4 +15,6 @@ export default [
     {symbol:"🥑", id:"avocado"},
     {symbol:"🍩", id:"4"},
     {symbol:"💋", id:"kiss"},
+    {symbol:"💎", id:"kiss"},
+    {symbol:"🌴", id:"kiss"}
 ];
