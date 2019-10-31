@@ -18,4 +18,7 @@ if(dev){
 
 const server = createServer(app);
 
-server.listen(process.env.PORT || 3000)
+server.listen(process.env.PORT || 3000, err => {
+    if (err) throw err;
+    console.log("server started")
+})

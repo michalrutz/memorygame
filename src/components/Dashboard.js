@@ -6,8 +6,8 @@ import Header from './Header';
 const Dashboard = (props) => {
         return (
             <div id="dashboard">
+                <Board/>
                 <Header count={props.count.count}/>
-                <Board/> 
             </div> 
     )
 }

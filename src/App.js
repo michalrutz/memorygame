@@ -6,11 +6,13 @@ import './styles/styles.scss';
 
 function App() {
   return (
-    <BrowserRouter>
-      <div>
-        <Route path="/" component={Dashboard} exact={true}></Route>
-      </div>
-    </BrowserRouter>
+            <BrowserRouter>
+              <div id="App">
+
+              <Route path="/" component={Dashboard} exact={true}></Route>          </div>
+
+            </BrowserRouter>
+
   )
 };
 

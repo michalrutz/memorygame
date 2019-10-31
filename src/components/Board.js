@@ -18,9 +18,7 @@ function createCard(symbol, index) {
             index={index}/>;
 }
 
-var cards = randomCards.map( (symbol, index) => {
-    return createCard(symbol, index);
-});
+var cards = randomCards.map( (symbol, index) => createCard(symbol, index));
 
 class Board extends Component {
     render(){ 
@@ -32,11 +30,3 @@ class Board extends Component {
 }
 
 export default Board;    
-
- // {randomCards.map((symbol, index)=>{ return (
-                //     <Card key={index+symbol.symbol} 
-                //         symbol={symbol.symbol}
-                //         symbolId={symbol.id}
-                //         index={index}
-                //         />)
-                //         })}
